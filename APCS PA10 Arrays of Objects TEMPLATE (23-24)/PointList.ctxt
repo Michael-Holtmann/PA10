@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=PointList
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=void\ displayOptions()
+comment2.text=\r\n\ Display\ the\ programs\ options\ to\ the\ user\r\n
+numComments=3

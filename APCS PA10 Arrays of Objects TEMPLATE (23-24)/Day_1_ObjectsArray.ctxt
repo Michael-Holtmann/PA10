@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Day_1_ObjectsArray
+comment0.text=\r\n\ Day\ 1\:\ Arrays\ of\ Objects\ -\ Strings\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=x
+comment2.target=void\ print(int[])
+comment2.text=A\ method\ that\ prints\ and\ array\ of\ int
+numComments=3
