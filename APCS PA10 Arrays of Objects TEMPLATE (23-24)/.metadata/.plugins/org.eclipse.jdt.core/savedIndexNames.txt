@@ -1,0 +1,1 @@
+INDEX VERSION 1.134+H:\APCSA\PA10\APCS PA10 Arrays of Objects TEMPLATE (23-24)\.metadata\.plugins\org.eclipse.jdt.core
