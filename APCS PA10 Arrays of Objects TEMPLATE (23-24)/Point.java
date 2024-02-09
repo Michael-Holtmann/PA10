@@ -20,7 +20,7 @@ public class Point
         this.y = y;
     }
     // return the points x-coordinate
-    public double getX() { return x; }
+    public double getX() { return x; } 
     
     //return the points y-coordinate
     public double getY() { return y; }

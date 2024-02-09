@@ -1,5 +1,6 @@
 /** Programming Assignment #10 -Program utilizes built-in arrays
  */
+
 import java.util.*;
 
 public class PointList
@@ -9,7 +10,8 @@ public class PointList
     public static void main(String[] args)
     {
         Scanner console = new Scanner(System.in);
-        int    i;
+        
+        
         int    choice;
         int    k;
         double  x;
@@ -25,29 +27,71 @@ public class PointList
             choice = console.nextInt();
             if( choice == 1 )
             {
+            	int control = 0; 
                 // Add a point 
                 System.out.printf( "Enter point %d as two doubles separated by spaces: ", size);
                 x = console.nextDouble();
                 y = console.nextDouble();
-            
-                // Create a single point and add to array
-                // add code here
+                
+                for (int i = 0; i < point.length; i++) {
+                	control = i;
+             
+                	if (point[i] == null) break;
+                }
+                
+                point[control] = new Point();
+                
+                point[control].setX(x);
+                point[control].setY(y);
             } 
             else if( choice == 2 )
             {
                 // Display the points
                 System.out.println( "Point list:\n" );
         
-                // add code here
+                for (int i = 0; i < point.length; i++) {
+                	if (point[i] == null) break;
+                	
+                	double distance = Math.sqrt(Math.pow(point[i].getX(), 2) + Math.pow(point[i].getY(), 2));
+                	
+                	
+                	System.out.printf("(%.2f, %.2f) The distance from origin = %.2f", point[i].getX(), point[i].getY(), distance);
+                	System.out.println();
+                }
                     
             }
             else if( choice == 3 )
             {
+            	
                 // Remove a point from the list
                 System.out.print( "Remove which point (Enter index number)? " );
                 k = console.nextInt();
+                
+                if (k <= point.length -1 || point[k] != null) {
+                	Point[] temp = new Point[point.length - (k-1)];
                     
-                    // add code here
+                    for (int i = k+1, j = 0; i < point.length; i++, j++) {
+                    	if (point[i] == null) break;
+                    	
+                    	temp[j] = point[i];
+                    }
+                    
+                    for (int p = k, t = 0; t < temp.length || p < point.length; p++, t++) {
+                    	if (temp[t] == null) {
+                    		point[p] = null;
+                    		break;
+                    	}
+                    	point[p] = temp[t];
+                    	
+
+                    }
+                    if (temp[temp.length - 1] != null) point[point.length - 1] = null;               
+          
+                    
+                    
+                    temp = null;
+                    System.gc();
+                }
                     
             }
             else if( choice == 4 )
