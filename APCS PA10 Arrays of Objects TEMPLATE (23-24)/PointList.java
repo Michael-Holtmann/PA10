@@ -96,19 +96,83 @@ public class PointList
             }
             else if( choice == 4 )
             {
-
-                // calculate the the line of best-fit.
-                    
-                // add code here
+            	
+            	double m  = covXY(point) / varX(point);
+            	double b = meanY(point) - m * meanX(point);
+            	double r = covXY(point) / (Math.sqrt(varX(point)) * Math.sqrt(varY(point)));
+            	
+                System.out.println("Line of best-fit:");
+                System.out.printf("Y = %.3f * X + %3f/n", m, b);
+                System.out.printf("r = %.3f", r);
+                		
                     
               
             }
         } while( choice < 5 );    
     }
     
+    
+    private static double meanX(Point[] input) {
+    	double result = 0;
+    	double size = 0;
+    	
+    	//@TODO write size method
+
+    	
+    	
+    	for (int i = 0; i < input.length; i++) {
+    		result += input[i].getX(); 
+    	}
+    	
+    	return result/input.length;
+    }
+    
+    private static double meanY(Point[] input) {
+    	double result = 0;
+    	
+    	for (int i = 0; i < input.length; i++) {
+    		result += input[i].getY(); 
+    	}
+    	
+    	return result/input.length;
+    }
+    
+    private static double varX(Point[] input) {
+    	double result = 0;
+    	
+    	for (int i = 0; i < input.length; i++) {
+    		result = Math.pow((meanX(input) - input[i].getX()), 2);
+    	}
+    	
+    	return result/(input.length - 1);
+    }
+    
+    private static double varY(Point[] input) {
+    	double result = 0;
+    	
+    	for (int i = 0; i < input.length; i++) {
+    		result = Math.pow((meanY(input) - input[i].getY()), 2);
+    	}
+    	
+    	return result/(input.length - 1);
+    }
+
+    private static double covXY(Point[] input) {
+    	double result = 0;
+    	
+    	for (int i = 0; i < input.length; i++) {
+    		result = (input[i].getX() - meanX(input)) * (input[i].getY() - meanY(input));
+    	}
+    	
+    	return result/input.length;
+    }
+    
+    
     /**
      * Display the programs options to the user
      */
+    
+    
     public static void displayOptions()
     {
         System.out.println("\n1. Add a point to the list.      2. Display the points.");
