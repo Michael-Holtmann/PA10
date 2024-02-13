@@ -102,7 +102,7 @@ public class PointList
             	double r = covXY(point) / (Math.sqrt(varX(point)) * Math.sqrt(varY(point)));
             	
                 System.out.println("Line of best-fit:");
-                System.out.printf("Y = %.3f * X + %3f/n", m, b);
+                System.out.printf("Y = %.3f * X + %3f\n", m, b);
                 System.out.printf("r = %.3f", r);
                 		
                     
@@ -110,68 +110,77 @@ public class PointList
             }
         } while( choice < 5 );    
     }
-    
-    
+     
     private static double meanX(Point[] input) {
-    	double result = 0;
-    	double size = 0;
-    	
-    	//@TODO write size method
-
-    	
+    	double result = 0;	
     	
     	for (int i = 0; i < input.length; i++) {
+    		if(input[i] == null) break;
     		result += input[i].getX(); 
     	}
     	
-    	return result/input.length;
+    	return result/size(input);
     }
     
     private static double meanY(Point[] input) {
     	double result = 0;
     	
     	for (int i = 0; i < input.length; i++) {
+    		if(input[i] == null) break;
     		result += input[i].getY(); 
     	}
     	
-    	return result/input.length;
+    	return result/size(input);
     }
     
     private static double varX(Point[] input) {
     	double result = 0;
     	
     	for (int i = 0; i < input.length; i++) {
+    		if(input[i] == null) break;
     		result = Math.pow((meanX(input) - input[i].getX()), 2);
     	}
     	
-    	return result/(input.length - 1);
+    	return result/(size(input) - 1);
     }
     
     private static double varY(Point[] input) {
     	double result = 0;
     	
     	for (int i = 0; i < input.length; i++) {
+    		if(input[i] == null) break;
     		result = Math.pow((meanY(input) - input[i].getY()), 2);
     	}
     	
-    	return result/(input.length - 1);
+    	return result/(size(input) - 1);
     }
 
     private static double covXY(Point[] input) {
     	double result = 0;
     	
     	for (int i = 0; i < input.length; i++) {
+    		if(input[i] == null) break;
     		result = (input[i].getX() - meanX(input)) * (input[i].getY() - meanY(input));
     	}
     	
-    	return result/input.length;
+    	return result/size(input);
     }
     
+    private static int size(Point[] input) {
+    	int result = 0;
+    	
+    	while(true) {
+    		if (input[result] == null) break;
+    		
+    		result++;
+    	}
+    	
+    	return result;
+    }
     
     /**
      * Display the programs options to the user
      */
-    
     
     public static void displayOptions()
     {
